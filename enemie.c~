@@ -1,0 +1,8 @@
+/*
+** EPITECH PROJECT, 2025
+** for
+** File description:
+** ceci
+*/
+
+int anime_sprite(sfSprite *)

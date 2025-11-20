@@ -40,9 +40,11 @@ int opened_window(sfRenderWindow *window, sfSprite *sprite, sfSprite *duck)
 {
     sfClock *clock = sfClock_create();
     float second = 0;
+    int x_pos = 0;
 
     sfSprite_setPosition(duck, (sfVector2f){0, 1080 / 2});
     sfSprite_setScale(duck, (sfVector2f){1, 1});
+    sfSprite_setTextureRect(duck, {{0, 0}, {110, 110}});
     while (sfRenderWindow_isOpen(window)){
         second = sfClock_getElapsedTime(clock).microseconds / 1000000.0;
         event_wheel(window, duck);
@@ -50,6 +52,7 @@ int opened_window(sfRenderWindow *window, sfSprite *sprite, sfSprite *duck)
         sfRenderWindow_drawSprite(window, sprite, NULL);
         sfRenderWindow_drawSprite(window, duck, NULL);
         if (second > 0.0002){
+            anime_sprite(duck, &x_pos);
             sfSprite_move(duck, (sfVector2f){1, 0});
             sfClock_restart(clock);
         }
